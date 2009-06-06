@@ -4,6 +4,12 @@ run "echo TODO > README"
 git :init
 run "cp config/database.yml config/example_database.yml"
 
+# Remove the fluff from the routes file, especially the default routes
+file 'config/routes.rb', 
+%q{ActionController::Routing::Routes.draw do |map|
+end
+}
+
 git :add => ".", :commit => "-m 'initial commit'"
 
 # Here we add the exception logger so that no exception ever excapes us again
